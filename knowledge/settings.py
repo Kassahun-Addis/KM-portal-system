@@ -42,19 +42,19 @@ EMAIL_HOST_PASSWORD = '21mariyamenate'
 
 # Application definition
 
-# INSTALLED_APPS = [
-#     'knowledge_portal',
-#     'django.contrib.admin',
-#     # 'django.contrib.auth.urls',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'ckeditor',
-#     'ckeditor_uploader',
-#     'tinymce',
-# ]
+INSTALLED_APPS = [
+    'knowledge_portal',
+    'django.contrib.admin',
+    # 'django.contrib.auth.urls',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
+    'tinymce',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
