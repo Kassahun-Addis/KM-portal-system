@@ -1,104 +1,155 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - DevPortal</title>
-  
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
-    <style>
-       
-    </style>
-</head>
-<body>
-
-<!-- Navigation Section -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class="container">
-      <a class="navbar-brand" href="/">DevPortal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <style></style>
+  </head>
+  <body>
+    <!-- Navigation Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">DevPortal</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
           <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">About</a>
-              </li>
-              
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">About</a>
+            </li>
           </ul>
+        </div>
       </div>
-  </div>
-</nav>
+    </nav>
 
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center justify-content-center text-center">
-    <div class="container">
+    <!-- Hero Section -->
+    <section
+      class="hero d-flex align-items-center justify-content-center text-center"
+    >
+      <div class="container">
         <h1 class="display-4">About DevPortal</h1>
         <p class="lead">Learn more about our mission and team.</p>
-        <p class="lead">DevPortal is a software developer portal aimed at providing a comprehensive platform for developers to enhance their skills, collaborate with peers, and contribute to open-source projects.</p>
-    </div>
-</section>
+        <p class="lead">
+          DevPortal is a software developer portal aimed at providing a
+          comprehensive platform for developers to enhance their skills,
+          collaborate with peers, and contribute to open-source projects.
+        </p>
+      </div>
+    </section>
 
-<!-- About Section -->
-<section class="about">
-    <div class="container">
+    <!-- About Section -->
+    <section class="about">
+      <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Our Mission</h2>
-                <p>We strive to be the ultimate destination for software development knowledge and collaboration. Our mission is to empower developers by providing a platform where they can connect, learn, and grow together.</p>
-                <p>DevPortal aims to bridge the gap between beginner and experienced developers, offering resources, tutorials, and forums to facilitate learning and skill development.</p>
-            </div>
-            <div class="col-md-6">
-                <h2>Our Team</h2>
-                <p>Meet our dedicated team of developers, designers, and enthusiasts who work tirelessly to make DevPortal a valuable resource for the software development community.</p>
-                <p>Our team is committed to maintaining a vibrant and supportive community, ensuring that developers of all levels feel welcome and encouraged to participate.</p>
-            </div>
+          <div class="col-md-6">
+            <h2>Our Mission</h2>
+            <p>
+              We strive to be the ultimate destination for software development
+              knowledge and collaboration. Our mission is to empower developers
+              by providing a platform where they can connect, learn, and grow
+              together.
+            </p>
+            <p>
+              DevPortal aims to bridge the gap between beginner and experienced
+              developers, offering resources, tutorials, and forums to
+              facilitate learning and skill development.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h2>Our Team</h2>
+            <p>
+              Meet our dedicated team of developers, designers, and enthusiasts
+              who work tirelessly to make DevPortal a valuable resource for the
+              software development community.
+            </p>
+            <p>
+              Our team is committed to maintaining a vibrant and supportive
+              community, ensuring that developers of all levels feel welcome and
+              encouraged to participate.
+            </p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Image Section -->
-<section class="image-section">
-    <div class="container">
+    <!-- Image Section -->
+    <section class="image-section">
+      <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <img src="{% static 'knowledge_portal/images/d1.jfif' %}" class="img-fluid" alt="Image 1">
-            </div>
-            <div class="col-md-3">
-                <img src="{% static 'knowledge_portal/images/d2.jfif' %}" class="img-fluid" alt="Image 2">
-            </div>
-            <div class="col-md-3">
-                <img src="{% static 'knowledge_portal/images/d3.jfif' %}" class="img-fluid" alt="Image 3">
-            </div>
-            <div class="col-md-3">
-                <img src="{% static 'knowledge_portal/images/d4.png' %}" class="img-fluid" alt="Image 4">
-            </div>
+          <div class="col-md-3">
+            <img
+              src="{% static 'knowledge_portal/images/d1.jfif' %}"
+              class="img-fluid"
+              alt="Image 1"
+            />
+          </div>
+          <div class="col-md-3">
+            <img
+              src="{% static 'knowledge_portal/images/d2.jfif' %}"
+              class="img-fluid"
+              alt="Image 2"
+            />
+          </div>
+          <div class="col-md-3">
+            <img
+              src="{% static 'knowledge_portal/images/d3.jfif' %}"
+              class="img-fluid"
+              alt="Image 3"
+            />
+          </div>
+          <div class="col-md-3">
+            <img
+              src="{% static 'knowledge_portal/images/d4.png' %}"
+              class="img-fluid"
+              alt="Image 4"
+            />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Footer -->
-<footer class="footer bg-dark text-white text-center py-4" style="margin-bottom: 40px;">
-    <div class="container">
+    <!-- Footer -->
+    <footer
+      class="footer bg-dark text-white text-center py-4"
+      style="margin-bottom: 40px"
+    >
+      <div class="container">
         <span class="text-white">© 2024 DevPortal. All rights reserved.</span>
-    </div>
-</footer>
+      </div>
+    </footer>
 
+    <!-- JavaScript for slideshow functionality -->
 
-<!-- JavaScript for slideshow functionality -->
-
-
-<!-- Bootstrap JavaScript (if needed) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
+    <!-- Bootstrap JavaScript (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
