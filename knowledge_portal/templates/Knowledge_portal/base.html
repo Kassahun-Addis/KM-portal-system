@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery for easier DOM manipulation -->
+
+    <style>
+        /* Custom CSS styles */
+        /* Add your custom styles here */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Add margin-bottom to push the form away from the section */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Section -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">DevPortal</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'create_post' %}">Blog</a>
+                </li>
+    
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <p class="nav-link">Welcome, {{ request.user.username }}</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Signup</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="container">
+        <h1 class="display-4">Welcome to DevPortal</h1>
+        <p class="lead">Your ultimate destination for software development knowledge and collaboration.</p>
+    </div>
+</section>
+
+<!-- Search form -->
+<div class="search-form">
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-light" type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <a href="{% url "communications" %}" class="feature-link">
+                    <i class="fas fa-comments fa-3x mb-3"></i>
+                    <h3>Communications</h3>
+                </a>
+                    <p>Connect with fellow developers offline, online, or in real-time.</p>
+               
+            </div>
+            <div class="col-md-4">
+                <a href="{% url "email" %}" class="feature-link">
+                    <i class="fas fa-comment fa-3x mb-3"></i>
+                    <h3>Messaging</h3>
+                </a>
+                    <p>Send and receive messages seamlessly within the portal.</p>
+              
+            </div>
+            <div class="col-md-4">
+                <a href="{% url "upload_file" %}" class="feature-link">
+                    <i class="fas fa-file-download fa-3x mb-3"></i>---<i class="fas fa-file-upload fa-3x mb-3"></i>
+
+                    <h3>Downloading/Uploading</h3>
+                </a>
+                    <p>Download resources, code snippets, and documents 
+                        $ Share your projects, files, and contributions with others.</p>
+                
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <a href="{% url "contact" %}" class="feature-link">
+                    <i class="fas fa-envelope fa-3x mb-3"></i>
+                    {% comment %} <i class="fas fa-question-circle fa-3x mb-3"></i>                    {% endcomment %}
+                     <h3>Emailing</h3>
+                </a>
+                    <p>send , receive emails with others.</p>
+             
+            </div> 
+
+            <div class="col-md-4">
+                <a href="{% url "homepage" %}" class="feature-link">
+                    <i class="fas fa-question-circle fa-3x mb-3"></i>
+                    <h3>question and Answer</h3>
+                </a>
+                    <p>Ask and submit answers seamlessly within the portal.</p>
+              
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url "editor" %}" class="feature-link">
+                    <i class="fas fa-pen fa-3x mb-3"></i>
+                    <h3>Writing Text</h3>
+                </a>
+                    <p>Create and edit text documents with ease.</p>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url "generate" %}" class="feature-link">
+                    <i class="fas fa-image fa-3x mb-3"></i>
+                    <h3>Creating Image</h3>
+                </a>
+                    <p>Design graphics, diagrams, and illustrations directly within the portal.</p>
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chatbot Widget -->
+<div id="chatbot-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button id="chatbot-toggle" class="btn btn-primary"><i class="fas fa-comment"></i> Chat with us</button>
+</div>
+
+<!-- End of Chatbot Widget -->
+
+<!-- Your existing HTML code -->
+{% comment %} <button onclick="openChatbot()">Chat with our bot</button> {% endcomment %}
+
+<script>
+function openChatbot() {
+    var width = 600;
+    var height = 400;
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+    var url = "https://app.agentx.so/community/agent/66224e7e0db109dcd23ffbd1";
+    window.open(url, "Chatbot", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+}
+</script>
+
+<script>
+    // JavaScript to toggle the chatbot window
+    $(document).ready(function(){
+        $("#chatbot-toggle").click(function(){
+            openChatbot();
+        });
+    });
+</script>
+
+
+{% block content %}
+    {% endblock %}
+<!-- Footer -->
+<footer class="footer bg-dark text-white text-center py-4">
+    <div class="container">
+        <span class="text-white">© 2024 DevPortal. All rights reserved.</span>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

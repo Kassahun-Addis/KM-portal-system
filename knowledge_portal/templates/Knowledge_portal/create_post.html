@@ -1,0 +1,103 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Devs|Blog</title>
+    <!-- Custom CSS -->
+    <style>
+        .carousel-image {
+            height: 350px; /* Adjust the height as needed */
+            object-fit: cover;
+            padding: 20px; /* Adjust the padding as needed */
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'knowledge_portal/images/d8.jfif' %}" class="d-block w-100 carousel-image" alt="first">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:blue;">Developers Portal Blog</h5>
+                    <p style="color:blue;">Hello Everyone, Welcome to Developers Portal </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'knowledge_portal/images/d9.jfif' %}" class="d-block w-100 carousel-image" alt="second">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:blue;">Frontend Developers</h5>
+                    <p style="color:black;">Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'knowledge_portal/images/d10.jfif' %}" class="d-block w-100 carousel-image" alt="third">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:Tomato;">Backend Developers</h5>
+                    <p style="color:Tomato;">Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+
+<section class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <h1 class="text-center mb-4">Welcome to Developers Blog Page</h1>
+          <h2 class="mb-3">Create Post</h2>
+          <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a href="/" style="font-size: 60px;">&#8249;</a>
+      </div>
+  </div>
+  <div class="row justify-content-center mt-5" id="postContainer">
+      {% for post in posts %}
+      <div class="col-md-6">
+          <div class="card mb-4">
+              <div class="card-body">
+                  <h3>{{ post.title }}</h3>
+                  {% if post.image %}
+                      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-3" style="max-width: 300px;">
+                  {% endif %}
+                  <p>{{ post.content }}</p>
+                  <p>Posted by {{ post.author.username }} on {{ post.publication_date }}</p>
+              </div>
+          </div> 
+      </div>
+      {% endfor %}
+  </div>
+</section>
+
+
+
+
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

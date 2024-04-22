@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Message</title>
+</head>
+<body>
+    <h1>Read Message</h1>
+    <p><strong>From:</strong> {{ message.sender.username }}</p>
+    <p><strong>Subject:</strong> {{ message.subject }}</p>
+    <p><strong>Timestamp:</strong> {{ message.timestamp }}</p>
+    <p>{{ message.body }}</p>
+
+
+
+    <a href="/" style="font-size: 60px;">&#8249;</a>
+    <hr>
+    <a href="{% url "email" %}" style="font-size: 60px;">&#8249;</a>
+
+
+</body>
+</html>
