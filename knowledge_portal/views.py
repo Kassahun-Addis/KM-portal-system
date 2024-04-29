@@ -16,6 +16,7 @@ from .models import Question, Response
 from .forms import RegisterUserForm, LoginForm, NewQuestionForm, NewResponseForm, NewReplyForm
 from .models import BlogPost
 from .forms import BlogPostForm
+from django.utils import timezone
 
 
 
@@ -137,16 +138,38 @@ def getMessages(request, room):
     return JsonResponse({"messages":list(messages.values())})
 
 
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = UploadFileForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('upload_file')
+#     else:
+#         form = UploadFileForm()
+#     files = UploadedFile.objects.all()
+#     return render(request, 'knowledge_portal/upload_file.html', {'form': form, 'files': files})
+
+
+
+
+# @login_required
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('upload_file')
+            uploaded_file = form.save(commit=False)
+            uploaded_file.user = request.user  # Associate the current user with the uploaded file
+            uploaded_file.save()
+            return redirect('upload_file')  # Redirect to the same page after successful upload
     else:
         form = UploadFileForm()
     files = UploadedFile.objects.all()
+    # Fetching additional information (optional)
+    for file in files:
+        file.username = file.user.username  # Assuming user is a ForeignKey in UploadedFile model
+        file.upload_time = file.upload_time.strftime("%Y-%m-%d %H:%M:%S")  # Formatting upload time
     return render(request, 'knowledge_portal/upload_file.html', {'form': form, 'files': files})
+
 
 def download_file(request, file_id):
     uploaded_file = UploadedFile.objects.get(pk=file_id)
@@ -166,6 +189,7 @@ def editor(request):
         return response
 
     return render(request, 'knowledge_portal/editor.html', {'form': form})
+
 
 def generate(request):
     text_input = request.GET.get('text_input')

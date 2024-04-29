@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS knowledge_portal_message;
+DROP TABLE IF EXISTS knowledge_portal_room;
+DROP TABLE IF EXISTS knowledge_portal_uploadedfile;
+DROP TABLE IF EXISTS knowledge_portal_mymodel;
+DROP TABLE IF EXISTS knowledge_portal_messageuser;
+DROP TABLE IF EXISTS knowledge_portal_contact;
+DROP TABLE IF EXISTS knowledge_portal_question;
+DROP TABLE IF EXISTS knowledge_portal_response;
+DROP TABLE IF EXISTS knowledge_portal_blogpost;

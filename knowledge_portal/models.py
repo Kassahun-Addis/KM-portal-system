@@ -1,22 +1,36 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.db import migrations
+
 
 # Create your models here.
+
 
 class Room(models.Model):
     name = models.CharField(max_length=1000)
 
 class Message(models.Model):
     value = models.CharField(max_length=1000000) 
-    date = models.DateTimeField(default=datetime.now ,blank=True)
+    date = models.DateTimeField(default=timezone.now ,blank=True)
     user = models.CharField(max_length=1000000) 
     room = models.CharField(max_length=1000000)      
 
 
+# class UploadedFile(models.Model):
+#    # id = models.AutoField(primary_key=True)  # Change back to AutoField
+#     file = models.FileField(upload_to='uploads/')
+#     uploaded_at = models.DateTimeField(auto_now_add=True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 class UploadedFile(models.Model):
     file = models.FileField(upload_to='uploads/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+    uploaded_at = models.DateTimeField(default=timezone.now)
+    upload_time = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # ForeignKey to the User model
+
 
 
 class MyModel(models.Model):
