@@ -1,13 +1,13 @@
 <nav class="navbar">
     <div class="main-menu">
       <ul>
-        <li><a href="{% url 'homepage' %}">Questions</a></li>
+        <li><a href="/">Homepage</a></li>
       </ul>
     </div>
     <div class="user-menu">
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="/">Homepage</a></li>
+        {% comment %} <li><a href="/">Homepage</a></li> {% endcomment %}
         <li><a href="{% url 'new-question' %}">Ask question</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}

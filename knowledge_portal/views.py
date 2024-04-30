@@ -61,7 +61,7 @@ def home(request):
 #     logout(request)
 #     return redirect('login')
 
-def about (request):
+def about(request):
     return render(request,'knowledge_portal/about.html')
 
 
@@ -93,8 +93,10 @@ def edit_post(request, post_id):
 
 
 
+@login_required
 def communications (request):
     return render(request,'knowledge_portal/communications.html')
+
 
 def room(request, room):
     username = request.GET.get('username')
@@ -175,6 +177,7 @@ def upload_file(request):
     return render(request, 'knowledge_portal/upload_file.html', {'form': form, 'files': files})
 
 
+@login_required
 def view_files(request):
     files = UploadedFile.objects.all()
 
@@ -185,13 +188,14 @@ def view_files(request):
     return render(request, 'knowledge_portal/view_files.html', {'files': files})
 
 
-
+@login_required
 def download_file(request, file_id):
     uploaded_file = UploadedFile.objects.get(pk=file_id)
     response = HttpResponse(uploaded_file.file, content_type='application/force-download')
     response['Content-Disposition'] = f'attachment; filename="{uploaded_file.file.name}"'
     return response
 
+@login_required
 def editor(request):
     form = MyModelForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -206,6 +210,7 @@ def editor(request):
     return render(request, 'knowledge_portal/editor.html', {'form': form})
 
 
+@login_required
 def generate(request):
     text_input = request.GET.get('text_input')
     image_url = None
@@ -328,6 +333,7 @@ def newQuestionPage(request):
     context = {'form': form}
     return render(request, 'knowledge_portal/new-question.html', context)
 
+
 def homePage(request):
     questions = Question.objects.all().order_by('-created_at')
     context = {
@@ -335,6 +341,7 @@ def homePage(request):
     }
     return render(request, 'knowledge_portal/homepage.html', context)
 
+@login_required
 def questionPage(request, id):
     response_form = NewResponseForm()
     reply_form = NewReplyForm()
