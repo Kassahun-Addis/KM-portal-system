@@ -152,7 +152,7 @@ def getMessages(request, room):
 
 
 
-# @login_required
+@login_required
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
