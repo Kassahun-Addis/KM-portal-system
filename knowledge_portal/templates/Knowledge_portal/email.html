@@ -6,27 +6,27 @@
 </head>
 <body>
 
-    <h1>Inbox</h1>
+    <h1 style="font-family: Arial, sans-serif; font-size: 24px;">Inbox</h1>
     <ul>
     {% for message in received_messages %}
         <li>
-            <strong>From:</strong> {{ message.sender.username }}<br>
-            <strong>Subject:</strong> {{ message.subject }}<br>
-            <strong>Timestamp:</strong> {{ message.timestamp }}<br>
-            <a href="{% url 'read_message' message.id %}">Read Message</a>
+            <strong style="font-weight: bold;">From:</strong> {{ message.sender.username }}<br>
+            <strong style="font-weight: bold;">Subject:</strong> {{ message.subject }}<br>
+            <strong style="font-weight: bold;">Timestamp:</strong> {{ message.timestamp }}<br>
+            <a href="{% url 'read_message' message.id %}" style="text-decoration: none; color: blue;">Read Message</a>
         </li>
     {% endfor %}
     </ul>
 
-<h1>Send Message</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send</button>
-</form>
+    <h1 style="font-family: Arial, sans-serif; font-size: 24px;">Send Message</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Send</button>
+    </form>
 
-<a href="/" style="font-size: 60px;">&#8249;</a>
-
+    <a href="/" style="font-size: 60px; text-decoration: none; color: black;">&#8249;</a>
 
 </body>
 </html>
+

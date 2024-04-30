@@ -69,45 +69,19 @@
 </section>
 
 <!-- Search form -->
-<div class="search-form">
+
+{% comment %} <div class="search-form">
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-light" type="submit">Search</button>
     </form>
-</div>
+</div> {% endcomment %}
 
 <!-- Features Section -->
 <section class="features">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <a href="{% url "communications" %}" class="feature-link">
-                    <i class="fas fa-comments fa-3x mb-3"></i>
-                    <h3>Communications</h3>
-                </a>
-                    <p>Connect with fellow developers offline, online, or in real-time.</p>
-               
-            </div>
-            <div class="col-md-4">
-                <a href="{% url "email" %}" class="feature-link">
-                    <i class="fas fa-comment fa-3x mb-3"></i>
-                    <h3>Messaging</h3>
-                </a>
-                    <p>Send and receive messages seamlessly within the portal.</p>
-              
-            </div>
-            <div class="col-md-4">
-                <a href="{% url "contact" %}" class="feature-link">
-                    <i class="fas fa-envelope fa-3x mb-3"></i>
-                    {% comment %} <i class="fas fa-question-circle fa-3x mb-3"></i>                    {% endcomment %}
-                     <h3>Emailing</h3>
-                </a>
-                    <p>send , receive emails with others.</p>
-             
-            </div> 
-            
-        </div>
-        <div class="row text-center">
+        
+    <div class="row text-center">
         <div class="col-md-4">
             <a href="{% url "upload_file" %}" class="feature-link">
                 <i class="fas fa-file-upload fa-3x mb-3"></i>
@@ -126,14 +100,20 @@
                 <p>Download resources, and documents.</p>
             
         </div>
+        <div class="col-md-4">
+            <a href=mailto: class="feature-link">
+                <i class="fas fa-envelope fa-3x mb-3"></i>
+                <h3>Emailing</h3>
+            </a>
+            <p>Send, receive emails with others.</p>
+        </div>  
     </div>
         <div class="row text-center">
             
-
             <div class="col-md-4">
                 <a href="{% url "homepage" %}" class="feature-link">
                     <i class="fas fa-question-circle fa-3x mb-3"></i>
-                    <h3>question and Answer</h3>
+                    <h3>Question and Answer</h3>
                 </a>
                     <p>Ask and submit answers seamlessly within the portal.</p>
               
@@ -155,6 +135,26 @@
                
             </div>
         </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <a href="{% url "communications" %}" class="feature-link">
+                    <i class="fas fa-comments fa-3x mb-3"></i>
+                    <h3>Communications</h3>
+                </a>
+                    <p>Connect with fellow developers offline, online, or in real-time.</p>
+               
+            </div>
+            {% comment %} <div class="col-md-4">
+                <a href="{% url "email" %}" class="feature-link">
+                    <i class="fas fa-comment fa-3x mb-3"></i>
+                    <h3>Messaging</h3>
+                </a>
+                    <p>Send and receive messages seamlessly within the portal.</p>
+              
+            </div> {% endcomment %}
+             
+            
+        </div>
     </div>
 </section>
 
@@ -165,7 +165,6 @@
 
 <!-- End of Chatbot Widget -->
 
-<!-- Your existing HTML code -->
 {% comment %} <button onclick="openChatbot()">Chat with our bot</button> {% endcomment %}
 
 <script>
