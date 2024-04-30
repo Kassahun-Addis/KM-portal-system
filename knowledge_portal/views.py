@@ -163,12 +163,27 @@ def upload_file(request):
             return redirect('upload_file')  # Redirect to the same page after successful upload
     else:
         form = UploadFileForm()
+    
+    # Retrieve all uploaded files
     files = UploadedFile.objects.all()
+
     # Fetching additional information (optional)
     for file in files:
         file.username = file.user.username  # Assuming user is a ForeignKey in UploadedFile model
         file.upload_time = file.upload_time.strftime("%Y-%m-%d %H:%M:%S")  # Formatting upload time
+
     return render(request, 'knowledge_portal/upload_file.html', {'form': form, 'files': files})
+
+
+def view_files(request):
+    files = UploadedFile.objects.all()
+
+    # Fetching usernames associated with each uploaded file
+    for file in files:
+        file.username = file.user.username  # Assuming user is a ForeignKey in UploadedFile model
+
+    return render(request, 'knowledge_portal/view_files.html', {'files': files})
+
 
 
 def download_file(request, file_id):

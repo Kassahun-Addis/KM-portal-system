@@ -97,18 +97,6 @@
               
             </div>
             <div class="col-md-4">
-                <a href="{% url "upload_file" %}" class="feature-link">
-                    <i class="fas fa-file-download fa-3x mb-3"></i>---<i class="fas fa-file-upload fa-3x mb-3"></i>
-
-                    <h3>Downloading/Uploading</h3>
-                </a>
-                    <p>Download resources, code snippets, and documents 
-                        $ Share your projects, files, and contributions with others.</p>
-                
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-4">
                 <a href="{% url "contact" %}" class="feature-link">
                     <i class="fas fa-envelope fa-3x mb-3"></i>
                     {% comment %} <i class="fas fa-question-circle fa-3x mb-3"></i>                    {% endcomment %}
@@ -117,6 +105,30 @@
                     <p>send , receive emails with others.</p>
              
             </div> 
+            
+        </div>
+        <div class="row text-center">
+        <div class="col-md-4">
+            <a href="{% url "upload_file" %}" class="feature-link">
+                <i class="fas fa-file-upload fa-3x mb-3"></i>
+
+                <h3>Uploading</h3>
+            </a>
+                <p>Share your projects, files, and contributions with others.</p>
+            
+        </div>
+        <div class="col-md-4">
+            <a href="{% url "view_files" %}" class="feature-link">
+                <i class="fas fa-file-download fa-3x mb-3"></i>
+
+                <h3>Downloading</h3>
+            </a>
+                <p>Download resources, and documents.</p>
+            
+        </div>
+    </div>
+        <div class="row text-center">
+            
 
             <div class="col-md-4">
                 <a href="{% url "homepage" %}" class="feature-link">

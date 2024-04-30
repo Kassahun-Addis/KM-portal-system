@@ -67,70 +67,68 @@
         a:hover {
             text-decoration: underline;
         }
+
+        #success-message {
+            position: absolute;
+            top: 25%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure the message is on top of the button */
+        }
+        .button-spacing {
+            margin-right: 40px; /* Adjusted margin */
+        }
+        
+        .upload-header {
+            margin-bottom: 20px; /* Adds spacing between the header and the form */
+        }
+                
+        .btn-primary {
+            margin-left: 10px; /* Adds spacing between the buttons */
+        }
+        
     </style>
+    
+    <!-- {% comment %} {% load tz %} {% endcomment %} -->
+
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Upload Files</h2>
-            <div class="search-form">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" id="file-search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-light" type="button" onclick="filterFiles()">Search</button>
-                </form>
+    <div class="container p-4">
+        <div class="upload-section rounded p-4">
+            <div class="header">
+                <h2 class="upload-header">Upload Your Files Here</h2>
+                <a href="/" class="back-home">Back to Home</a>
             </div>
-            
-            <a href="/" class="back-home">Back to Home</a>
+    
+            <form method="post" enctype="multipart/form-data" id="upload-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary me-2">Upload</button>
+                <a href="{% url 'view_files' %}" class="btn btn-primary">View Files</a> <!-- Modified button -->
+                <div id="success-message" class="alert alert-success mt-3" style="display: none;">You have successfully uploaded!</div>
+            </form>
         </div>
-
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Upload</button>
-        </form>
-
-        <h3>Uploaded Files:</h3>
-        <table id="file-table" class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Uploaded File</th>
-                    <th>Upload Time</th>
-                </tr>
-            </thead>
-            <tbody id="file-list">
-                {% for file in files %}
-                    <tr>
-                        <td>{{ file.id }}</td>
-                        <td>{{ file.username }}</td>
-                        <td><a href="{% url 'download_file' file.id %}">{{ file.file.name }}</a></td>
-                        <td>{{ file.upload_time }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="4">No files uploaded yet.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
     </div>
+    
+    
 
     <script>
-        function filterFiles() {
-            const searchInput = document.getElementById('file-search').value.toLowerCase();
-            const fileTable = document.getElementById('file-table');
-            const fileRows = fileTable.getElementsByTagName('tr');
-
-            for (let i = 1; i < fileRows.length; i++) {
-                const fileName = fileRows[i].getElementsByTagName('td')[2].innerText.toLowerCase();
-                if (fileName.includes(searchInput)) {
-                    fileRows[i].style.display = 'table-row';
-                } else {
-                    fileRows[i].style.display = 'none';
-                }
-            }
-        }
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+        
+            // Show the success message
+            document.getElementById('success-message').style.display = 'block';
+    
+            // Hide the success message after 6 seconds
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'none';
+                
+                // Submit the form
+                document.getElementById('upload-form').submit();
+            }, 6000); // Adjust the delay as needed (in milliseconds)
+        });
     </script>
+    
+    
 </body>
 </html>
