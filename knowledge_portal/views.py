@@ -23,7 +23,7 @@ from django.utils import timezone
 import openai # type: ignore
 
 
-openai.api_key = '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'
+openai.api_key = 'sk-proj-4bkLt8ERCQWvLjgU7JxBT3BlbkFJJXcrddBDBKpV6GLykhvO'
 
 
 # Create your views here.
