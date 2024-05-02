@@ -72,11 +72,11 @@ ROOT_URLCONF = 'knowledge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')  ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')  ],
         # 'DIRS': [r'D:\1 KM\KM portal system\knowledge\knowledge_portal\templates' ],
         #'DIRS': [BASE_DIR , '/templates'],
         #'DIRS':  ['templates'],   
-        'DIRS':  [],  
+        #'DIRS':  [],  
         
         'APP_DIRS': True,
         'OPTIONS': {
@@ -148,6 +148,9 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 MEDIA_ROOT=BASE_DIR / 'pic'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
