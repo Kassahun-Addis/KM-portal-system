@@ -28,9 +28,7 @@ openai.api_key = 'sk-proj-4bkLt8ERCQWvLjgU7JxBT3BlbkFJJXcrddBDBKpV6GLykhvO'
 
 # Create your views here.
 
-def home(request):
-    # return render(request,'knowledge_portal/home.html')
-    return render(request,'home.html')
+
 
 # def user_signup(request):
 #     if request.method == 'POST':
@@ -64,6 +62,10 @@ def home(request):
 
 def about(request):
     return render(request,'knowledge_portal/about.html')
+
+def home(request):
+    return render(request,'knowledge_portal/home.html')
+    #return render(request,'home.html')
 
 
 @login_required(login_url='login')
