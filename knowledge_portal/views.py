@@ -60,12 +60,13 @@ openai.api_key = 'sk-proj-4bkLt8ERCQWvLjgU7JxBT3BlbkFJJXcrddBDBKpV6GLykhvO'
 #     logout(request)
 #     return redirect('login')
 
-def about(request):
-    return render(request,'knowledge_portal/about.html')
 
 def home(request):
     return render(request,'knowledge_portal/home.html')
     #return render(request,'home.html')
+
+def about(request):
+    return render(request,'knowledge_portal/about.html')
 
 
 @login_required(login_url='login')
