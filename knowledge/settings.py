@@ -72,7 +72,7 @@ ROOT_URLCONF = 'knowledge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')  ],
+        'DIRS': [os.path.join(BASE_DIR, 'knowledge_portal/templates')  ],
         # 'DIRS': [r'D:\1 KM\KM portal system\knowledge\knowledge_portal\templates' ],
         #'DIRS': [BASE_DIR , '/templates'],
         #'DIRS':  ['templates'],   
